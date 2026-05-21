@@ -4,12 +4,19 @@ import { useParams, Link } from 'react-router-dom';
 import { filmesMock } from '../services/filmesMock';
 import { ThemeContext } from '../contexts/ThemeContext';
 
+// CONEXÃO DO PASSO 8: Importamos o contexto global de favoritos
+import { FavoritosContext } from '../contexts/FavoritosContext';
+
 function DetalhesFilme() {
   const { id } = useParams();
   const { tema } = useContext(ThemeContext);
 
+  // CONEXÃO DO PASSO 8: Consumimos o estado da lista e as funções do contexto
+  const { favoritos, adicionarFavorito, removerFavorito } = useContext(FavoritosContext);
+
   const [filme, setFilme] = useState(null);
   const [carregando, setCarregando] = useState(true);
+  const isFavoritado = favoritos.some((item) => item.imdbID === id);
 
   useEffect(() => {
     // Procuramos no nosso array o filme que possui o mesmo imdbID da URL 
@@ -23,6 +30,15 @@ function DetalhesFilme() {
 
     return () => clearTimeout(timer);
   }, [id]); // Executa novamente se o ID na URL mudar 
+
+  // CONEXÃO DO PASSO 8: Função que gerencia o clique no botão
+  const handleFavoritoClick = () => {
+    if (isFavoritado) {
+      removerFavorito(filme.imdbID);
+    } else {
+      adicionarFavorito(filme);
+    }
+  };
 
   if (carregando) {
     return <h3 style={{ textAlign: 'center', marginTop: '20px' }}>Carregando detalhes do filme...</h3>;
@@ -64,21 +80,23 @@ function DetalhesFilme() {
           <p style={{ lineHeight: '1.6', fontSize: '16px' }}><strong>Sinopse:</strong> {filme.Plot}</p>
         </div>
 
-        {/* Botão de Favoritar (Deixaremos o botão pronto, a lógica será no Passo 8)  */}
+        {/* COMPONENTE ATUALIZADO NO PASSO 8: Lógica e interface reativas baseadas no estado de favorito */}
         <div style={{ marginTop: '20px', display: 'flex', gap: '15px' }}>
           <button 
+            onClick={handleFavoritoClick}
             style={{
               padding: '10px 20px',
-              backgroundColor: '#e91e63',
+              // Altera a cor do botão dinamicamente: vermelho escuro se já for favorito, rosa se não for
+              backgroundColor: isFavoritado ? '#e53935' : '#e91e63',
               color: '#fff',
               border: 'none',
               borderRadius: '4px',
               cursor: 'pointer',
               fontWeight: 'bold'
             }}
-            onClick={() => alert('A funcionalidade de favoritos será ativada no Passo 8!')}
           >
-            Adicionar aos Favoritos
+            {/* Altera o texto do botão reativamente */}
+            {isFavoritado ? 'Remover dos Favoritos' : 'Adicionar aos Favoritos'}
           </button>
           
           <Link 
