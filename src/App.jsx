@@ -21,7 +21,7 @@ function App() {
         <FavoritosProvider>
           <BrowserRouter>
             <Header />
-            <main style={{ padding: '0 10px' }}>
+            <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
