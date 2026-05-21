@@ -43,3 +43,20 @@ Siga os passos abaixo para clonar e rodar o projeto localmente:
 1. **Instalar as dependências do projeto:**
    ```bash
    npm install
+
+
+
+
+
+Histório de de Commits/Linha do Tempo:
+
+$ git log --oneline
+2d548b4 (HEAD -> main, origin/main) Passo 10: Criando a documentacao README.md e finalizando o projeto para entrega
+1fb0ced Passo 9: Adicionando toasts de feedback para ações de favoritos e ajustes finos de layout
+494574f Passo 8: Criando FavoritosContext e integrando persistência da lista de favoritos
+7095ad6 Passo 7: Pagina de detalhes do filme criada utilizando useParams para capturar rota dinamica
+f2f74c5 Passo 6: Listando filmes na Home com carregamento de dados e link para rotas dinamicas
+318b04e Passo 5: Criando componente ProtectedRoute e protegendo a rota de favoritos
+79f5149 Passo 4: Criando AuthContext e tela de login simulado com redirecionamento
+7a57648 Passo 3: Criando e configurando ThemeContext para controle de tema claro e escuro
+2e85cdd Passo 1 e 2: Setup do projeto, estrutura de pastas e rotas básicas com BrowserRouter
