@@ -6,23 +6,26 @@ import Login from './pages/Login';
 import Favoritos from './pages/Favoritos';
 import Header from './components/Header';
 
-// IMPORTANTE: Importamos o provedor de tema que acabámos de criar
 import { ThemeProvider } from './contexts/ThemeContext';
+// IMPORTANTE: Importamos o provedor de autenticação
+import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter>
-        <Header />
-        
-        <main style={{ padding: '0 10px' }}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/favoritos" element={<Favoritos />} />
-          </Routes>
-        </main>
-      </BrowserRouter>
+      {}
+      <AuthProvider>
+        <BrowserRouter>
+          <Header />
+          <main style={{ padding: '0 10px' }}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/favoritos" element={<Favoritos />} />
+            </Routes>
+          </main>
+        </BrowserRouter>
+      </AuthProvider>
     </ThemeProvider>
   );
 }
