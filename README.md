@@ -1,16 +1,45 @@
-# React + Vite
+# 🎬 MeuCineClube
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O **MeuCineClube** é uma aplicação web Single Page Application que foi desenvolvida em React. O projeto se baseia uma plataforma de cinema onde os usuários podem navegar por um catálogo de filmes, consultar detalhes específicos de cada obra, gerir uma lista de favoritos personalizada e alternar entre os modos de tema claro e escuro.
 
-Currently, two official plugins are available:
+Este projeto foi desenvolvido como atividade prática para a disciplina de **Desenvolvimento de Software para Web** sob a orientação da **Profª Marianne Lacerda Dutra Theodoro**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🚀 Funcionalidades
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. **Navegação SPA:** Transição instantânea entre páginas sem recarregamento do navegador (Home, Login, Favoritos e Detalhes).
+2. **Tema Global (Claro/Escuro):** Alternância dinâmica de cores em toda a interface com persistência de dados.
+3. **Autenticação Simulada:** Área de login estruturada com restrição de acessos.
+4. **Rotas Protegidas (Guarda de Rotas):** Bloqueio de segurança na página de favoritos para utilizadores não autenticados.
+5. **Gestão de Favoritos:** Adição e remoção de filmes com feedback visual em tempo real.
+6. **Persistência Local:** Utilização do `localStorage` para manter o tema escolhido, a sessão do utilizador e a lista de favoritos mesmo após o refresh (`F5`).
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🧠 Conceitos de React Aplicados
+
+- **React Router Dom (v6):** Configuração de rotas declarativas (`BrowserRouter`, `Routes`, `Route`), links de navegação (`Link`), parâmetros dinâmicos na URL (`useParams`) e redirecionamento programático/imperativo (`useNavigate`).
+- **Context API:** Criação de múltiplos contextos independentes para evitar o *Prop Drilling* e otimizar as re-renderizações (`ThemeContext`, `AuthContext`, `FavoritosContext`).
+- **Hooks Nativos:** `useState` para estados reativos, `useEffect` para efeitos colaterais (sincronização com o `localStorage`) e `useContext` para consumo de dados globais.
+- **Higher-Order Components (HOC):** Criação do componente `ProtectedRoute` para envelopar e proteger componentes filhos com base em condições lógicas.
+- **Renderização Condicional e Feedback:** Mensagens dinâmicas de carregamento, validações de listas vazias e alertas flutuantes (*toasts*) temporários para ações do utilizador.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- [React](https://react.dev/)
+- [Vite](https://vite.dev/)
+- [React Router Dom](https://reactrouter.com/)
+- JavaScript (ES6+) / JSX
+
+---
+
+## 🔧 Como Executar o Projeto
+
+Siga os passos abaixo para clonar e rodar o projeto localmente:
+
+1. **Instalar as dependências do projeto:**
+   ```bash
+   npm install
