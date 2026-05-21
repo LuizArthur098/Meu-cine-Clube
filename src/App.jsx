@@ -7,13 +7,13 @@ import Favoritos from './pages/Favoritos';
 import Header from './components/Header';
 
 import { ThemeProvider } from './contexts/ThemeContext';
-// IMPORTANTE: Importamos o provedor de autenticação
 import { AuthProvider } from './contexts/AuthContext';
+// IMPORTANTE: Importamos o componente de proteção
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
     <ThemeProvider>
-      {}
       <AuthProvider>
         <BrowserRouter>
           <Header />
@@ -21,7 +21,14 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/favoritos" element={<Favoritos />} />
+              <Route 
+                path="/favoritos" 
+                element={
+                  <ProtectedRoute>
+                    <Favoritos />
+                  </ProtectedRoute>
+                } 
+              />
             </Routes>
           </main>
         </BrowserRouter>
